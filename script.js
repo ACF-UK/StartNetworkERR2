@@ -76,23 +76,13 @@ function drawMarkerArea(data) {
       //           return feature.properties[config.joinAttribute];
       //       });
 
-dc.rowChart("#Sector .Sector", groupname)
-      .margins({top: 5, left: 10, right: 10, bottom: 30})
-      .width(200)
-      .height(300)
-      .dimension(bySector)
-      .group(bySectorGroup)
-      .colors([ "#9467bd", "#ff7f0e", "#2ca02c", "#d62728", "#7f7f7f","#8c564b", "#1f77b4",  "#e377c2", "#bcbd22", "#17becf"])
-      .title(function(d){return d.value;})
-      // .ordering(function(d) { return -d.value; })
-      // .ordering([ "Protection", "Other", "", "Comms","FSL","Shelter", "Social Mobalisation",  "WASH", "Camp Management", "Nutrition"])
-      .elasticX(true)
-      .xAxis().ticks(4);
 
-dc.rowChart("#Agency .Agency", groupname)
-      .margins({top: 5, left: 10, right: 10, bottom: 60})
+//Agency (Who)
+var agencyChart = dc.rowChart("#Agency .Agency", groupname)
+
+agencyChart.margins({top: 5, left: 10, right: 10, bottom: 50})
       .width(200)
-      .height(300)
+      .height(400)
       .dimension(byAgency)
       .colors(["cadetblue"])
       .group(byAgencyGroup)
@@ -101,10 +91,28 @@ dc.rowChart("#Agency .Agency", groupname)
             })
       .ordering(function(d) { return -d.value; })
       .elasticX(true)
-      .xAxis().ticks(4);
+      .xAxis().ticks(2);
 
-dc.rowChart("#Province .Province", groupname)
-      .margins({top: 5, left: 10, right: 10, bottom: 50})
+
+//Sector(What)
+var sectorChart = dc.rowChart("#Sector .Sector", groupname)
+
+      sectorChart.margins({top: 5, left: 10, right: 10, bottom: 50})
+      .width(200)
+      .height(400)
+      .dimension(bySector)
+      .group(bySectorGroup)
+      .colors([ "#9467bd", "#ff7f0e", "#2ca02c", "#d62728", "#7f7f7f","#8c564b", "#1f77b4",  "#e377c2", "#bcbd22", "#17becf"])
+      .title(function(d){return d.value;})
+      // .ordering(function(d) { return -d.value; })
+      // .ordering([ "Protection", "Other", "", "Comms","FSL","Shelter", "Social Mobalisation",  "WASH", "Camp Management", "Nutrition"])
+      .elasticX(true)
+      .xAxis().ticks(2);
+
+//Region (Where)
+var provinceChart = dc.rowChart("#Province .Province", groupname)
+
+      provinceChart.margins({top: 5, left: 10, right: 10, bottom: 50})
       .width(200)
       .height(400)
       .dimension(byProvince)
@@ -113,12 +121,26 @@ dc.rowChart("#Province .Province", groupname)
       .title(function (d){return d.value;})
       .ordering(function(d) { return -d.value; })
       .elasticX(true)
-      .xAxis().ticks(4);
+      .xAxis().ticks(2);
 
 $('#reset').on('click', function (){
   dc.filterAll(groupname);
   dc.redrawAll(groupname);
   return false;
 })
-  dc.renderAll(groupname);
+
+dc.renderAll(groupname);
+
+
+function AddXAxis(chartToUpdate, displayText)
+{
+    sectorChart.svg()
+                .append("text")
+                .attr("class", "x-axis-label")
+                .attr("text-anchor", "middle")
+                .attr("x", chartToUpdate.width()/2)
+                .attr("y", chartToUpdate.height()-3.5)
+                .text(displayText);
+}
+AddXAxis(sectorChart, "Number of activity indicators");
 }
