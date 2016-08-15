@@ -142,5 +142,5 @@ function AddXAxis(chartToUpdate, displayText)
                 .attr("y", chartToUpdate.height()-3.5)
                 .text(displayText);
 }
-AddXAxis(sectorChart, "Number of activity indicators");
+AddXAxis(sectorChart, "Number of output indicators");
 }

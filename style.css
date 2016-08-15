@@ -1,4 +1,7 @@
-
+header {
+  display: block;
+  background-color: #1B1F29;
+}
 .dc-chart g.row text {
     fill: black;
 }
@@ -135,8 +138,9 @@ p.buffer{
 }
 
 img{
-  height: 70px;
+  height: 60px;
   margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 /*.q0-9 { fill:rgb(247,251,255); }
