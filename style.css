@@ -2,14 +2,40 @@ header {
   display: block;
   background-color: #1B1F29;
 }
+/*
+.container{
+    padding-bottom:20px;
+
+}*/
+
 .dc-chart g.row text {
     fill: black;
 }
 
+#dc-data-table {
+  color: black;
+  font-size: 12px;
+}
+
+
+.dc-table-label{
+  background-color: lightgray;
+  color: black;
+  font-size: 14px;
+}
+.header{
+  font-size: 16px;
+  color: gray;
+
+}
 /*.dc-chart g.row rect {
     fill: steelblue;
 
 }*/
+
+#blank{
+  color: white;
+}
 
 #credits{
   float: right;
@@ -23,6 +49,7 @@ header {
 #map {
   height: 450px;
   width: 550px;
+  margin-bottom: 80px;
 }
 
 #Agency {
@@ -30,22 +57,23 @@ header {
   width: 200px;
   text: black;
   fill: black;
+  margin-bottom: 190px;
 }
 
 #Sector {
   height: 450px;
   width: 200px;
+  margin-bottom: 20px;
 }
 
 #Province {
   height: 200px;
   width: 200px;
   font-family: Arial;
+  margin-bottom: 230px;
 }
 
-#dc-data-table {
-  height: 800px;
-}
+
 
 .buffer {
   color: white;

@@ -1,3 +1,5 @@
+var dataTable = dc.dataTable("#dc-data-table")
+
 d3.tsv("data.tsv", function(data) {
  // drawMarkerSelect(data);
   drawMarkerArea(data);
@@ -36,25 +38,12 @@ function drawMarkerArea(data) {
   var activitiesGroup = activities.group().reduceCount();
 
 
-
   var tableData = crossfilter(data);
   var all = tableData.groupAll();
   var dimension = tableData.dimension(function (d) {
     return d.Agency;
   });
 
-  var dataTable = dc.dataTable(".dc-data-table");
-
-
-  dataTable.width(960).height(5000)
-  .dimension(dimension)
-  .group(function(d) {return "Who What Where"})
-  .columns([
-    function(d) {return d.Agency;},
-    function(d) {return d.Sector;},
-    function(d) {return d.Country;},
-    function(d) {return d.Province;}
-  ]);
 
   dc.leafletMarkerChart("#map .map", groupname)
       .dimension(activities)
@@ -93,7 +82,6 @@ agencyChart.margins({top: 5, left: 10, right: 10, bottom: 50})
       .elasticX(true)
       .xAxis().ticks(2);
 
-
 //Sector(What)
 var sectorChart = dc.rowChart("#Sector .Sector", groupname)
 
@@ -102,7 +90,7 @@ var sectorChart = dc.rowChart("#Sector .Sector", groupname)
       .height(400)
       .dimension(bySector)
       .group(bySectorGroup)
-      .colors([ "#9467bd", "#ff7f0e", "#2ca02c", "#d62728", "#7f7f7f","#8c564b", "#1f77b4",  "#e377c2", "#bcbd22", "#17becf"])
+      .colors([ "#9467bd", "#ff7f0e", "#2ca02c", "#7f7f7f", "#d62728","#8c564b", "#bcbd22", "#e377c2", "#1f77b4"])
       .title(function(d){return d.value;})
       // .ordering(function(d) { return -d.value; })
       // .ordering([ "Protection", "Other", "", "Comms","FSL","Shelter", "Social Mobalisation",  "WASH", "Camp Management", "Nutrition"])
@@ -122,6 +110,28 @@ var provinceChart = dc.rowChart("#Province .Province", groupname)
       .ordering(function(d) { return -d.value; })
       .elasticX(true)
       .xAxis().ticks(2);
+
+
+
+var dataTable = dc.dataTable("#dc-data-table", groupname)
+
+    dataTable.dimension(activities)
+    .group(function(d){return d.Sector;})
+    .size(75)
+    .columns([
+      function(d) {return d.blank;},
+      function(d) {return d.Agency;},
+      function(d) {return d.Country;},
+      function(d) {return d.Province1;},
+      function(d) {return d.Indicator;},
+      function(d) {return d.Target;},
+      function(d) {return d.Interim;}
+    ])
+    .sortBy(function (d) {
+      return d.Agency;
+    })
+    .order(d3.ascending);
+
 
 $('#reset').on('click', function (){
   dc.filterAll(groupname);

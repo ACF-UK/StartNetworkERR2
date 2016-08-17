@@ -16,7 +16,7 @@
 
 <header>
   <div class="container">
-    <img id="logo" src="StartLogoWhite.svg">
+    <a href="http://www.startnetwork.org/"><img id="logo" src="StartLogoWhite.svg"></a>
   </div>
 </header>
 <div class="container">
@@ -35,12 +35,12 @@
                     <div  class="map" id="map"> </div>
                 </div>
 
-                <div  class="col-lg-2 col-md-12 col-sm-12 col-xs-12"  data-step="7" data-intro="Click on the chart to filter by agency" data-position="left" id="Agency">
+                <div  class="col-lg-2 col-md-12 col-sm-12 col-xs-12"  data-step="7" data-position="left" id="Agency">
                     <h4>Agency</h4><h5>(Who)</h5>
                     <div  class="Agency" id="Agency"> </div>
                 </div>
 
-                <div  class="col-lg-2 col-md-12 col-sm-12 col-xs-12"  data-step="7" data-intro="Click on the chart to filter by agency" data-position="left" id="Sector">
+                <div  class="col-lg-2 col-md-12 col-sm-12 col-xs-12"  data-step="7" data-position="left" id="Sector">
                     <h4>Sector</h4><h5>(What)</h5>
                     <div  class="Sector" id="Sector"> </div>
                 </div>
@@ -49,11 +49,27 @@
                     <h4>Region</h4><h5>(Where)</h5>
                     <div  class="Province" id="Province"> </div>
                 </div>
-
-    </div>
-  <div class="row">
   </div>
+
+    <div class="row">
+                <div class="col-md-12">
+                    <table class="table table-hover" id="dc-data-table">
+                        <thead>
+                          <tr class="header">
+                            <th>Sector</th>
+                            <th>Agency</th>
+                            <th>Country</th>
+                            <th>Region</th>
+                            <th>Output indicator</th>
+                            <th>Target</th>
+                            <th>Achieved</th>
+                          </tr>
+                        </thead>
+                    </table>
+                  </div>
+    </div>
 </div>
+
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="d3.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
