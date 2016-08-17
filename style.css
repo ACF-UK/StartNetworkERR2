@@ -50,6 +50,7 @@ header {
   height: 450px;
   width: 550px;
   margin-bottom: 80px;
+  margin-right: 3px;
 }
 
 #Agency {
@@ -131,15 +132,19 @@ div.tooltip2 {
 }
 
 h1{
-  color: #DC4747;
+  color: #B01E3C;
 }
-
 h2{
-  color: #DC4747;
+  color: #B01E3C;
 }
-
 h3{
   color: black;
+}
+h4{
+  color: #B01E3C;
+}
+h5{
+  color: #B01E3C;
 }
 
 #Signature{
