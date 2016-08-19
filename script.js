@@ -90,7 +90,7 @@ var sectorChart = dc.rowChart("#Sector .Sector", groupname)
       .height(400)
       .dimension(bySector)
       .group(bySectorGroup)
-      .colors([ "#9467bd", "#ff7f0e", "#2ca02c", "#7f7f7f", "#d62728","#8c564b", "#bcbd22", "#e377c2", "#1f77b4"])
+      .colors([ "#9467bd", "#ff7f0e", "#2ca02c", "#d62728","#7f7f7f","#8c564b", "#bcbd22", "#e377c2", "#1f77b4"])
       .title(function(d){return d.value;})
       // .ordering(function(d) { return -d.value; })
       // .ordering([ "Protection", "Other", "", "Comms","FSL","Shelter", "Social Mobalisation",  "WASH", "Camp Management", "Nutrition"])
@@ -128,7 +128,7 @@ var dataTable = dc.dataTable("#dc-data-table", groupname)
       function(d) {return d.Interim;}
     ])
     .sortBy(function (d) {
-      return d.Agency;
+      return d.Sector;
     })
     .order(d3.ascending);
 
